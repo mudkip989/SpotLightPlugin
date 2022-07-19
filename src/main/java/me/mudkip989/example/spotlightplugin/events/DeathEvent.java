@@ -37,14 +37,14 @@ public class DeathEvent implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        if (Objects.equals(player.getUniqueId().toString(), "f4ecfa65-a67d-4bc1-a0e3-3c76c56dae8a")){
+        if (player.getUniqueId().toString().equals("f4ecfa65-a67d-4bc1-a0e3-3c76c56dae8a")){
             player.sendMessage("A̶f̸r̵a̷i̷d̷ ̶t̶o̸ ̸w̸a̶i̶l̵,̸ ̷a̶f̶r̷a̷i̶d̵ ̸o̷f̷ ̶h̶i̵s̵ ̵t̶a̵l̴e̷");
         }
-        if (Objects.equals(player.getUniqueId().toString(), "79cbd6b6-eac9-4201-9ff5-c029075fcace")){
+        if (player.getUniqueId().toString().equals("79cbd6b6-eac9-4201-9ff5-c029075fcace")){
             player.sendMessage("omg clownpierce joined -Ricegang 2022");
 
         }
-        if (Objects.equals(player.getUniqueId().toString(), "a64cd226-5a85-4655-a696-788a9fcb2f5c")){
+        if (player.getUniqueId().toString().equals("a64cd226-5a85-4655-a696-788a9fcb2f5c")){
             player.sendMessage("L Bozo");
         }
         
