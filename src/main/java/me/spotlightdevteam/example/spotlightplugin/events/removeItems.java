@@ -1,4 +1,4 @@
-package me.mudkip989.spotlight.events;
+package me.spotlightdevteam.example.spotlightplugin.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

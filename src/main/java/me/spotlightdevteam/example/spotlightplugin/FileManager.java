@@ -1,4 +1,4 @@
-package me.mudkip989.example.spotlightplugin;
+package me.spotlightdevteam.example.spotlightplugin;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;

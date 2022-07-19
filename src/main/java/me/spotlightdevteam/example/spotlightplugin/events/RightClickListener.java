@@ -1,9 +1,9 @@
-package me.mudkip989.example.spotlightplugin.events;
+package me.spotlightdevteam.example.spotlightplugin.events;
 
 import java.util.Iterator;
 import java.util.Random;
 
-import me.mudkip989.example.spotlightplugin.SpotlightManager;
+import me.spotlightdevteam.example.spotlightplugin.SpotlightManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

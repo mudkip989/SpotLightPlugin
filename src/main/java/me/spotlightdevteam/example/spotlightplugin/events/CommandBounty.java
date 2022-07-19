@@ -1,7 +1,7 @@
-package me.mudkip989.example.spotlightplugin.events;
+package me.spotlightdevteam.example.spotlightplugin.events;
 
-import me.mudkip989.example.spotlightplugin.FileManager;
-import me.mudkip989.example.spotlightplugin.SpotlightPlugin;
+import me.spotlightdevteam.example.spotlightplugin.FileManager;
+import me.spotlightdevteam.example.spotlightplugin.SpotlightPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
