@@ -1,12 +1,10 @@
 package me.spotlightdevteam.example.spotlightplugin;
 
-import com.sun.jdi.connect.spi.TransportService;
-import me.spotlightdevteam.example.spotlightplugin.events.CommandBounty;
+import me.spotlightdevteam.example.spotlightplugin.commands.CommandBounty;
 import me.spotlightdevteam.example.spotlightplugin.events.DeathEvent;
 import me.spotlightdevteam.example.spotlightplugin.events.RightClickListener;
-import me.spotlightdevteam.example.spotlightplugin.events.removeItems;
+import me.spotlightdevteam.example.spotlightplugin.utils.removeItems;
 
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -18,8 +16,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.time.*;
-
-import static java.time.temporal.ChronoUnit.SECONDS;
 
 
 public final class SpotlightPlugin extends JavaPlugin {

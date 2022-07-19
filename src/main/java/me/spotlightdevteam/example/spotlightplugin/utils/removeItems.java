@@ -1,4 +1,4 @@
-package me.spotlightdevteam.example.spotlightplugin.events;
+package me.spotlightdevteam.example.spotlightplugin.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

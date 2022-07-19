@@ -1,4 +1,4 @@
-package me.spotlightdevteam.example.spotlightplugin.events;
+package me.spotlightdevteam.example.spotlightplugin.commands;
 
 import me.spotlightdevteam.example.spotlightplugin.FileManager;
 import me.spotlightdevteam.example.spotlightplugin.SpotlightPlugin;
