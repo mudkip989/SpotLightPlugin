@@ -30,7 +30,7 @@ public final class SpotlightPlugin extends JavaPlugin {
 
     public void onEnable() {
         instance = this;
-        System.out.println("SpotlightV2.3 had been successfully loaded");
+        System.out.println("SpotlightV2.0 had been successfully loaded");
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             @Override
             public void run() {
