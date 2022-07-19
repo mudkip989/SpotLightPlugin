@@ -1,4 +1,4 @@
-package me.silance_.spotlight.events;
+package me.mudkip989.spotlight.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
