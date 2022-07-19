@@ -6,7 +6,7 @@
 
     <groupId>me.mudkip989.example</groupId>
     <artifactId>SpotlightPlugin</artifactId>
-    <version>2.0-SNAPSHOT</version>
+    <version>2.0-SNAPSHOT-a</version>
     <packaging>jar</packaging>
 
     <name>SpotlightPlugin</name>
