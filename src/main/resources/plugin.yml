@@ -3,7 +3,7 @@ version: '2.0'
 main: me.spotlightdevteam.example.spotlightplugin.SpotlightPlugin
 api-version: 1.19
 prefix: Spotlight
-authors: [ mudkip989 & Silance_ ]
+authors: [mudkip989, Silance_]
 description: A remake of a rake Pyra0's Spotlight onto 1.19 with Blacklisted itmes
 commands:
   bounty:
@@ -11,4 +11,5 @@ commands:
     usage: /<command>
   version:
     description: Returns the plugin version
+    aliases: [vers, spotlight]
     usage: /<command>
