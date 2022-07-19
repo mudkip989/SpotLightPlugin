@@ -1,6 +1,6 @@
 name: SpotlightPlugin
-version: '${project.version}'
-main: me.mudkip989.example.spotlightplugin.SpotlightPlugin
+version: '2.4'
+main: me.spotlightdevteam.example.spotlightplugin.SpotlightPlugin
 api-version: 1.19
 prefix: Spotlight
 authors: [ mudkip989 & Silance_ ]
