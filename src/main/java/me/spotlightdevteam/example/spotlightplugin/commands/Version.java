@@ -21,6 +21,7 @@ public class Version implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             player.sendMessage(ChatColor.YELLOW + "Spotlight Version: " + ChatColor.DARK_PURPLE + "2.0");
+            return true;
         }
         return false;
     }
