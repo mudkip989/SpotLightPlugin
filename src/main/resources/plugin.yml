@@ -3,8 +3,8 @@ version: '${project.version}'
 main: me.mudkip989.example.spotlightplugin.SpotlightPlugin
 api-version: 1.19
 prefix: Spotlight
-authors: [ mudkip989 ]
-description: A remake of Pyra0's Spotlight onto 1.19
+authors: [ mudkip989 & Silance_ ]
+description: A remake of a rake Pyra0's Spotlight onto 1.19 with Blacklisted itmes
 commands:
   bounty:
     description: Displays Your Target Player
