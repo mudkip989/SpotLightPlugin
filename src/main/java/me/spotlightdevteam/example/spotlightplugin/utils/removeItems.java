@@ -44,9 +44,11 @@ public class removeItems {
 
             //IntelliJ told me this could be replaced with enhanced for loop. So I did.
             for (Material blacklistedItem : blacklistedItems) {
-                player.getInventory().removeItem(new ItemStack(blacklistedItem, 2048));
-                player.updateInventory();
+                if(player.getInventory().contains(blacklistedItem)) {
+                    player.getInventory().removeItem(new ItemStack(blacklistedItem, 2048));
+                    player.updateInventory();
 
+                }
             }
 
 
