@@ -30,8 +30,8 @@ public class RightClickListener implements Listener {
 
                 PotionEffectType effect;
                 int amplifier;
-                for(Iterator var4 = SpotlightManager.getRandomEffects(2).iterator(); var4.hasNext(); p.addPotionEffect(new PotionEffect(effect, Integer.MAX_VALUE, amplifier))) {
-                    effect = (PotionEffectType)var4.next();
+                for(Iterator<PotionEffectType> var4 = SpotlightManager.getRandomEffects(2).iterator(); var4.hasNext(); p.addPotionEffect(new PotionEffect(effect, Integer.MAX_VALUE, amplifier))) {
+                    effect = var4.next();
                     amplifier = 0;
                     if (effect != PotionEffectType.FIRE_RESISTANCE) {
                         amplifier = random.nextInt(2);

@@ -25,7 +25,7 @@ public final class SpotlightManager {
         List<PotionEffectType> choices = new ArrayList(possibleEffects);
 
         for(int x = 0; x < amount && !choices.isEmpty(); ++x) {
-            PotionEffectType effect = (PotionEffectType)choices.get(random.nextInt(choices.size()));
+            PotionEffectType effect = choices.get(random.nextInt(choices.size()));
             choices.remove(effect);
             toReturn.add(effect);
         }
@@ -40,7 +40,7 @@ public final class SpotlightManager {
         meta.setCustomModelData(10);
         spotlight.setItemMeta(meta);
         ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(SpotlightPlugin.getInstance(), "spotlight-recipe"), spotlight);
-        recipe.shape(new String[]{"LTL", "DLD", "LGL"});
+        recipe.shape("LTL", "DLD", "LGL");
         recipe.setIngredient('L', Material.LIGHT);
         recipe.setIngredient('T', Material.TOTEM_OF_UNDYING);
         recipe.setIngredient('D', Material.DIAMOND_BLOCK);

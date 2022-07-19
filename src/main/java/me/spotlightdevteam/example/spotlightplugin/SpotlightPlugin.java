@@ -76,23 +76,25 @@ public final class SpotlightPlugin extends JavaPlugin {
         int len = pList.length;
         if (len < 2) {
             return false;
-        } else {
-            Long timestamp = System.currentTimeMillis();
-            String[] var6 = pList;
-            int var7 = pList.length;
-
-            for(int var8 = 0; var8 < var7; ++var8) {
-                String uid = var6[var8];
-                List<String> tempList = new LinkedList(Arrays.asList(pList));
-                tempList.remove(uid);
-                tempList.remove(0);
-                String target = (String)tempList.get(rand.nextInt(0, tempList.size() - 1));
-                file.getConfig().set("playerData." + uid + ".bounty", target);
-                file.saveConfig();
-            }
-
-            return true;
         }
+        //The else statement here was unneeded as the if statement with the "return false;" takes us out of here if there is not enough players
+        Long timestamp = System.currentTimeMillis();
+        //String[] var6 = pList;
+        //int var7 = pList.length;
+
+        //The for loops here seem different, but really the shorter one is a faster and more efficient one than the longer one.
+        //We can use this to minimize number of variables in the future and cause less confusion
+        //for(int var8 = 0; var8 < var7; ++var8) {
+        for(String uid: pList){
+            List<String> tempList = new LinkedList(Arrays.asList(pList));
+            tempList.remove(uid);
+            tempList.remove(0);
+            String target = tempList.get(rand.nextInt(0, tempList.size() - 1));
+            file.getConfig().set("playerData." + uid + ".bounty", target);
+            file.saveConfig();
+        }
+
+        return true;
     }
 
     void registerEvents() {

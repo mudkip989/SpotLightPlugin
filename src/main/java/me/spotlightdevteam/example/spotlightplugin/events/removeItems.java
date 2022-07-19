@@ -33,17 +33,18 @@ public class removeItems {
             }
 
             for (Material blacklistedItem : blacklistedItems) {
-
-                if (p.getPlayer().getInventory().getItemInOffHand() != null && p.getPlayer().getInventory().getItemInOffHand().getType() == blacklistedItem) {
+                //"p.getPlayer().getInventory().getItemInOffHand() != null" always returns true. Empty slots in minecraft are actually just the item "air".
+                p.getPlayer().getInventory().getItemInOffHand();
+                if (p.getPlayer().getInventory().getItemInOffHand().getType() == blacklistedItem) {
                     p.getInventory().setItemInOffHand(null);
                     p.getPlayer().updateInventory();
                 }
 
             }
 
-
-            for (int items = 0; items < blacklistedItems.length; items++) {
-                player.getInventory().removeItem(new ItemStack(blacklistedItems[items], 2048));
+            //IntelliJ told me this could be replaced with enhanced for loop. So I did.
+            for (Material blacklistedItem : blacklistedItems) {
+                player.getInventory().removeItem(new ItemStack(blacklistedItem, 2048));
                 player.updateInventory();
 
             }
