@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 
-public class remove_items {
+public class removeItems {
 
 
     public static void clear() {
