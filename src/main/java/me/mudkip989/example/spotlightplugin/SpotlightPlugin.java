@@ -27,6 +27,13 @@ public final class SpotlightPlugin extends JavaPlugin {
 
     public void onEnable() {
         instance = this;
+        System.out.println("SpotlightV2.2 had been sucessfully loaded");
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+            @Override
+            public void run() {
+                remove_items.clear();
+            }
+        }, 0L, 20L);
         new BukkitRunnable(){
             @Override
             public void run(){
