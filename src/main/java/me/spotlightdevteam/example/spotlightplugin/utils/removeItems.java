@@ -34,6 +34,7 @@ public class removeItems {
 
             for (Material blacklistedItem : blacklistedItems) {
                 //"p.getPlayer().getInventory().getItemInOffHand() != null" always returns true. Empty slots in minecraft are actually just the item "air".
+                
                 p.getPlayer().getInventory().getItemInOffHand();
                 if (p.getPlayer().getInventory().getItemInOffHand().getType() == blacklistedItem) {
                     p.getInventory().setItemInOffHand(null);
