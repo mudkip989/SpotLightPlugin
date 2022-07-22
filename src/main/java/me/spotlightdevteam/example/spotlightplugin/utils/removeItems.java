@@ -43,6 +43,7 @@ public class removeItems {
             }
 
             //IntelliJ told me this could be replaced with enhanced for loop. So I did.
+            //I knew i could enchance it but I just found it is easier for me to read given I already know python and js and it has similar format
             for (Material blacklistedItem : blacklistedItems) {
                 if(player.getInventory().contains(blacklistedItem)) {
                     player.getInventory().removeItem(new ItemStack(blacklistedItem, 2048));
