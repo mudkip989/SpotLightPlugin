@@ -13,3 +13,6 @@ commands:
     description: Returns the plugin version
     aliases: [vers]
     usage: /<command>
+  faction:
+    description: Manages your current group.
+    usage: /<command>

@@ -1,6 +1,7 @@
 package me.spotlightdevteam.example.spotlightplugin;
 
 import me.spotlightdevteam.example.spotlightplugin.commands.CommandBounty;
+import me.spotlightdevteam.example.spotlightplugin.commands.CommandTeam;
 import me.spotlightdevteam.example.spotlightplugin.commands.Version;
 import me.spotlightdevteam.example.spotlightplugin.events.DeathEvent;
 import me.spotlightdevteam.example.spotlightplugin.events.RightClickListener;
@@ -64,6 +65,7 @@ public final class SpotlightPlugin extends JavaPlugin {
         }).runTaskTimerAsynchronously(getInstance(), 0L, 20L);
         this.getCommand("bounty").setExecutor(new CommandBounty());
         this.getCommand("version").setExecutor(new Version());
+        this.getCommand("faction").setExecutor(new CommandTeam());
         this.registerEvents();
         SpotlightManager.registerSpotlight();
     }
