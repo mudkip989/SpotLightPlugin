@@ -2,8 +2,11 @@ package me.spotlightdevteam.example.spotlightplugin;
 
 import me.spotlightdevteam.example.spotlightplugin.commands.CommandBounty;
 import me.spotlightdevteam.example.spotlightplugin.commands.CommandTeam;
+import me.spotlightdevteam.example.spotlightplugin.commands.TabCompleteTeam;
 import me.spotlightdevteam.example.spotlightplugin.commands.Version;
+import me.spotlightdevteam.example.spotlightplugin.events.DamageEvent;
 import me.spotlightdevteam.example.spotlightplugin.events.DeathEvent;
+import me.spotlightdevteam.example.spotlightplugin.events.InvEvents;
 import me.spotlightdevteam.example.spotlightplugin.events.RightClickListener;
 import me.spotlightdevteam.example.spotlightplugin.utils.removeItems;
 
@@ -29,12 +32,7 @@ public final class SpotlightPlugin extends JavaPlugin {
     public void onEnable() {
         instance = this;
         System.out.println("SpotlightV2.0 had been successfully loaded");
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-            @Override
-            public void run() {
-                removeItems.clear();
-            }
-        }, 0L, 20L);
+
 
         (new BukkitRunnable() {
             public void run() {
@@ -66,6 +64,7 @@ public final class SpotlightPlugin extends JavaPlugin {
         this.getCommand("bounty").setExecutor(new CommandBounty());
         this.getCommand("version").setExecutor(new Version());
         this.getCommand("faction").setExecutor(new CommandTeam());
+        this.getCommand("faction").setTabCompleter(new TabCompleteTeam());
         this.registerEvents();
         SpotlightManager.registerSpotlight();
     }
@@ -91,8 +90,9 @@ public final class SpotlightPlugin extends JavaPlugin {
             tempList.remove(0);
             String target = tempList.get(rand.nextInt(0, tempList.size() - 1));
             file.getConfig().set("playerData." + uid + ".bounty", target);
-            file.saveConfig();
         }
+        file.getConfig().set("recents", "empty");
+        file.saveConfig();
 
         return true;
     }
@@ -101,6 +101,8 @@ public final class SpotlightPlugin extends JavaPlugin {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new DeathEvent(), this);
         pm.registerEvents(new RightClickListener(), this);
+        pm.registerEvents(new DamageEvent(), this);
+        pm.registerEvents(new InvEvents(), this);
     }
 
     public static SpotlightPlugin getInstance() {

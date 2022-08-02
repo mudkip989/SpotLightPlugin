@@ -9,56 +9,55 @@ import org.bukkit.inventory.ItemStack;
 public class removeItems {
 
 
-    public static void clear() {
-        for (Player p : Bukkit.getServer().getOnlinePlayers()) {
-            Player player = p.getPlayer();
-            assert player != null;
-            Material[] blacklistedItems = new Material[]{
-                    Material.NETHERITE_CHESTPLATE, Material.NETHERITE_LEGGINGS, Material.NETHERITE_BOOTS,
-                    Material.TIPPED_ARROW, Material.END_CRYSTAL, Material.RESPAWN_ANCHOR, Material.NETHERITE_HELMET};
-            for (int i = 0; i < 5; i++) {
-                if (p.getPlayer().getInventory().getHelmet() != null && p.getPlayer().getInventory().getHelmet().getType() == Material.NETHERITE_HELMET) {
-                    p.getInventory().setHelmet(null);
-                    p.getPlayer().updateInventory();
-                }else if (p.getPlayer().getInventory().getChestplate() != null && p.getPlayer().getInventory().getChestplate().getType() == Material.NETHERITE_CHESTPLATE) {
-                    p.getInventory().setChestplate(null);
-                    p.getPlayer().updateInventory();
-                }else if (p.getPlayer().getInventory().getLeggings() != null && p.getPlayer().getInventory().getLeggings().getType() == Material.NETHERITE_LEGGINGS) {
-                    p.getInventory().setLeggings(null);
-                    p.getPlayer().updateInventory();
-                }else if (p.getPlayer().getInventory().getBoots() != null && p.getPlayer().getInventory().getBoots().getType() == Material.NETHERITE_BOOTS) {
-                    p.getInventory().setBoots(null);
-                    p.getPlayer().updateInventory();
-                }
+    public static void clear(Player player) {
+        Player p = player;
+        assert player != null;
+        Material[] blacklistedItems = new Material[]{
+                Material.NETHERITE_CHESTPLATE, Material.NETHERITE_LEGGINGS, Material.NETHERITE_BOOTS,
+                Material.TIPPED_ARROW, Material.END_CRYSTAL, Material.RESPAWN_ANCHOR, Material.NETHERITE_HELMET};
+        for (int i = 0; i < 5; i++) {
+            if (p.getPlayer().getInventory().getHelmet() != null && p.getPlayer().getInventory().getHelmet().getType() == Material.NETHERITE_HELMET) {
+                p.getInventory().setHelmet(null);
+                p.getPlayer().updateInventory();
+            } else if (p.getPlayer().getInventory().getChestplate() != null && p.getPlayer().getInventory().getChestplate().getType() == Material.NETHERITE_CHESTPLATE) {
+                p.getInventory().setChestplate(null);
+                p.getPlayer().updateInventory();
+            } else if (p.getPlayer().getInventory().getLeggings() != null && p.getPlayer().getInventory().getLeggings().getType() == Material.NETHERITE_LEGGINGS) {
+                p.getInventory().setLeggings(null);
+                p.getPlayer().updateInventory();
+            } else if (p.getPlayer().getInventory().getBoots() != null && p.getPlayer().getInventory().getBoots().getType() == Material.NETHERITE_BOOTS) {
+                p.getInventory().setBoots(null);
+                p.getPlayer().updateInventory();
             }
+        }
 
-            for (Material blacklistedItem : blacklistedItems) {
-                //"p.getPlayer().getInventory().getItemInOffHand() != null" always returns true. Empty slots in minecraft are actually just the item "air".
+        for (Material blacklistedItem : blacklistedItems) {
+            //"p.getPlayer().getInventory().getItemInOffHand() != null" always returns true. Empty slots in minecraft are actually just the item "air".
 
-                if (p.getPlayer().getInventory().getItemInOffHand().getType() == blacklistedItem) {
-                    p.getInventory().setItemInOffHand(null);
-                    p.getPlayer().updateInventory();
-                }
-
+            if (p.getPlayer().getInventory().getItemInOffHand().getType() == blacklistedItem) {
+                p.getInventory().setItemInOffHand(null);
+                p.getPlayer().updateInventory();
             }
-
-            //IntelliJ told me this could be replaced with enhanced for loop. So I did.
-            //I knew i could enchance it but I just found it is easier for me to read given I already know python and js and it has similar format
-            for (Material blacklistedItem : blacklistedItems) {
-                if(player.getInventory().contains(blacklistedItem)) {
-                    player.getInventory().removeItem(new ItemStack(blacklistedItem, 2048));
-                    player.updateInventory();
-
-                }
-            }
-
-
-
-            }
-
 
         }
+
+        //IntelliJ told me this could be replaced with enhanced for loop. So I did.
+        //I knew i could enchance it but I just found it is easier for me to read given I already know python and js and it has similar format
+        for (Material blacklistedItem : blacklistedItems) {
+            if (player.getInventory().contains(blacklistedItem)) {
+                player.getInventory().removeItem(new ItemStack(blacklistedItem, 2048));
+                player.updateInventory();
+
+            }
+        }
+
+
     }
+
+
+
+
+}
 
 /*     public static void clear() {
         int i = 0;

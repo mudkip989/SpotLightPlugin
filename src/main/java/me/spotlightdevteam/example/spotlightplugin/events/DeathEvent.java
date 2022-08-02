@@ -2,6 +2,9 @@ package me.spotlightdevteam.example.spotlightplugin.events;
 
 import me.spotlightdevteam.example.spotlightplugin.FileManager;
 import me.spotlightdevteam.example.spotlightplugin.SpotlightPlugin;
+import me.spotlightdevteam.example.spotlightplugin.commands.CommandTeam;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,6 +14,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class DeathEvent implements Listener {
@@ -32,31 +37,75 @@ public class DeathEvent implements Listener {
                 file.getConfig().set("playerData." + Hunter + ".bounty", "empty");
                 file.saveConfig();
             }
+            Integer tidp = file.getConfig().getInt("playerData." + victim.getUniqueId().toString() + ".team.id");
+            Integer tidd = file.getConfig().getInt("playerData." + killer.getUniqueId().toString() + ".team.id");
+            Boolean betp = file.getConfig().getBoolean("playerData." + victim.getUniqueId().toString() + ".team.betray");
+            Boolean betd = file.getConfig().getBoolean("playerData." + killer.getUniqueId().toString() + ".team.betray");
+            Player p = victim;
+            Player d = killer;
+
+            String[] pList = file.getConfig().getString("players").split("\\|");
+
+            if (tidp == tidd && (betd || betp)) {
+
+                if (betd) {
+                    String form = file.getConfig().getString("playerData." + d.getUniqueId().toString() + ".team.formatted");
+                    file.getConfig().set("playerData." + d.getUniqueId().toString() + ".team.id", null);
+                    file.getConfig().set("playerData." + d.getUniqueId().toString() + ".team.name", null);
+                    file.getConfig().set("playerData." + d.getUniqueId().toString() + ".team.betray", null);
+                    file.getConfig().set("playerData." + d.getUniqueId().toString() + ".team.formatted", null);
+                    file.getConfig().set("playerData." + d.getUniqueId().toString() + ".team.bans", tidd);
+                    file.saveConfig();
+                    for (String uuid : pList) {
+                        int cid = file.getConfig().getInt("playerData." + uuid + ".team.id");
+                        if (cid == tidd) {
+
+                            Bukkit.getPlayer(uuid).sendMessage(ChatColor.GOLD + d.getName() + ChatColor.RED + " has killed a teammate, and been automatically removed!");
+                        }
+
+                    }
+                } else {
+
+                    String form = file.getConfig().getString("playerData." + p.getUniqueId().toString() + ".team.formatted");
+
+                    for (String uuid : pList) {
+                        int cid = file.getConfig().getInt("playerData." + uuid + ".team.id");
+                        if (cid == tidd) {
+                            d.sendMessage(Bukkit.getPlayer(uuid).getName());
+                            Bukkit.getPlayer(uuid).sendMessage(ChatColor.GOLD + d.getName() + ChatColor.RED + " has killed " + ChatColor.GOLD + p.getName() + ChatColor.RED + ", and been automatically removed!");
+                        }
+
+                    }
+                    file.getConfig().set("playerData." + p.getUniqueId().toString() + ".team.id", null);
+                    file.getConfig().set("playerData." + p.getUniqueId().toString() + ".team.name", null);
+                    file.getConfig().set("playerData." + p.getUniqueId().toString() + ".team.betray", null);
+                    file.getConfig().set("playerData." + p.getUniqueId().toString() + ".team.formatted", null);
+                    file.getConfig().set("playerData." + p.getUniqueId().toString() + ".team.bans", tidp);
+                    file.saveConfig();
+                }
+            }
+
+
+
         }
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        //fyi String objects also have .equals(n) method where n is the string to compare to. Might actually want to switch to that instead.
-        if (Objects.equals(player.getUniqueId().toString(), "f4ecfa65-a67d-4bc1-a0e3-3c76c56dae8a")){
-            player.sendMessage("A̶f̸r̵a̷i̷d̷ ̶t̶o̸ ̸w̸a̶i̶l̵,̸ ̷a̶f̶r̷a̷i̶d̵ ̸o̷f̷ ̶h̶i̵s̵ ̵t̶a̵l̴e̷");
-            //this does not send to all players, I can look into that thing, but right now im reviewing your changes and optimizing where needed.
-        }
-        if (Objects.equals(player.getUniqueId().toString(), "79cbd6b6-eac9-4201-9ff5-c029075fcace")){
-            player.sendMessage("omg clownpierce joined -Ricegang 2022");
 
-        }
-        //example of earlier comment on 41
-        if (player.getUniqueId().toString().equals("a64cd226-5a85-4655-a696-788a9fcb2f5c")){
-            player.sendMessage("L Bozo");
-        }
         
         FileManager file = new FileManager(SpotlightPlugin.getInstance(), "serverData.yml");
         if (!file.getConfig().getString("players").contains(player.getUniqueId().toString())) {
             player.sendMessage("§6Welcome to Spotlight SMP!");
             String curValue = file.getConfig().getString("players");
             file.getConfig().set("players", curValue + "|" + player.getUniqueId());
+            file.saveConfig();
+        }
+        if (!file.getConfig().getString("recents").contains(player.getUniqueId().toString())) {
+            player.sendMessage("§6A new Day has begun! Check /bounty!");
+            String curValue = file.getConfig().getString("recents");
+            file.getConfig().set("recents", curValue + "|" + player.getUniqueId());
             file.saveConfig();
         }
 

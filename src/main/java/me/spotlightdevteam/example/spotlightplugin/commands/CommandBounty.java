@@ -25,7 +25,8 @@ public class CommandBounty implements CommandExecutor {
             Instant finish = Instant.now();
             Instant lastDate = Instant.parse(file.getConfig().getString("lastChange"));
             long Diff = Duration.between(lastDate, finish).toSeconds();
-            int differ = 86400-(int)Diff;
+            int maxTime = file.getConfig().getInt("resetPeriod");
+            int differ = maxTime-(int)Diff;
             int seconds = differ%60;
             int minutes = (differ/60)%60;
             int hours = (differ/3600)%24;
